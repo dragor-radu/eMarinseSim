@@ -17,7 +17,8 @@ const nave = new mongoose.Schema({
         required: true
     },
     coordonate: {
-        type: Object
+        type: Object,
+        required: true
     },
     locuri_disponibile: {
         type: Number
