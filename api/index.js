@@ -7,6 +7,7 @@ import ruteRoutes from './routes/rute.routes.js';
 import navigationRoutes from './routes/navigation.routes.js';
 import { startProgramCheck } from './controllers/navigation.controller.js';
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 
 mongoose.connect("mongodb+srv://cristianmihaila:wRS8LMmIVlJnpoW9@e-marine.perf2i9.mongodb.net/e-marine_db?retryWrites=true&w=majority&appName=e-marine").then(() => {
@@ -15,7 +16,14 @@ mongoose.connect("mongodb+srv://cristianmihaila:wRS8LMmIVlJnpoW9@e-marine.perf2i
     console.log(err);
 });
 
+const __dirname = path.resolve();
+
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 
 app.use(express.json());
 
