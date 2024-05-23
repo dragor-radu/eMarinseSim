@@ -4,6 +4,7 @@ import { FaAnchor, FaShip } from "react-icons/fa";
 import 'leaflet/dist/leaflet.css';
 import ReactDOMServer from 'react-dom/server';
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Map() {
     const [formData, setFormData] = useState({ nume_nava: '' });
@@ -141,14 +142,17 @@ export default function Map() {
 
     return (
         <div>
-            <div className='h-screen flex flex-col bg-blue-900 rounded shadow-md'>
+            <div className='h-screen flex flex-col bg-blue-900 shadow-md'>
                 <h1 className='text-2xl text-center text-gray-100 py-5 font-sans '>
                     eMarine - Track your ship
                 </h1>
-                <form onSubmit={handleFormSubmit} className='flex justify-center items-center py-5'>
+                <form onSubmit={handleFormSubmit} className='flex justify-center items-center py-2'>
                     <input onChange={handleFormChange} type='text' placeholder='Enter your ship name' className='border-2 p-1 border-gray-500 rounded px-2' />
                     <button className='bg-gray-900 ml-2 p-1 text-white rounded px-2'>Track</button>
                 </form>
+                <Link to = '/program' className='flex justify-center items-center mt-2 mb-2'>
+                    <button className='bg-slate-900 text-white px-12 py-2 rounded-xl hover:opacity-90 disabled:opacity-70'>Check ships program here</button>
+                </Link>
                 <div className='flex flex-1'>
                     <div className='h-full w-full border-8 border-black rounded'>
                         <div className='relative w-full h-full'>
