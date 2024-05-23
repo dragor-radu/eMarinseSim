@@ -125,8 +125,8 @@ const navigateNava = async (nume_nava, port_plecare, port_sosire ) => {
                     },
                     { new: true }
                 );
-              }
                 console.log(`Navigated nava ${nava.nume_nava}`);
+              }
             }
             point += 1;
         }, 10000);
