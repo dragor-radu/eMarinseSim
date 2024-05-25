@@ -143,9 +143,15 @@ export default function Map() {
     return (
         <div>
             <div className='h-screen flex flex-col bg-blue-900 shadow-md'>
-                <h1 className='text-2xl text-center text-gray-100 py-5 font-sans '>
-                    eMarine - Track your ship
-                </h1>
+                <div className='flex justify-between items-center text-2xl text-gray-100 py-5 font-sans '>
+                    <div className='ml-2 text-blue-900 text-sm text-left'>Admin</div>
+                    <h1 className='text-center flex-grow'>
+                        eMarine - Track your ship
+                    </h1>
+                    <Link to="/adminPage" className='text-right text-sm mr-2' >
+                        Admin
+                    </Link>
+                </div>
                 <form onSubmit={handleFormSubmit} className='flex justify-center items-center py-2'>
                     <input onChange={handleFormChange} type='text' placeholder='Enter your ship name' className='border-2 p-1 border-gray-500 rounded px-2' />
                     <button className='bg-gray-900 ml-2 p-1 text-white rounded px-2'>Track</button>

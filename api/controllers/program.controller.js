@@ -10,12 +10,14 @@ export const getProgram = async (req, res) => {
 }
 
 export const addProgram = async (req, res) => {
-    const {admin_secret, program} = req.body;
-    if (admin_secret !== process.env.ADMIN_SECRET) {
-        return res.status(401).json({ message: 'Unauthorized' });
+    console.log(req.user.userId, req.params.id);
+    if (req.user.userId !== req.params.id) {
+        return res.status(403).json({ message: 'Unauthorized' });
     }
-    const newProgram = new Program(program);
     try {
+        const program = req.body;
+        console.log(program);
+        const newProgram = new Program(program);
         await newProgram.save();
         res.status(201).json(newProgram);
     } catch (error) {

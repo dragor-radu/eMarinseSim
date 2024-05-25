@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const program = new mongoose.Schema({
+// Define your schema
+const programSchema = new mongoose.Schema({
     nume_nava: {
         type: String,
         required: true
@@ -21,12 +22,18 @@ const program = new mongoose.Schema({
         type: String,
         required: true
     },
-    traseu: {
-        type: Array,
-        required: true
-    },
 }, { collection: 'Program_Curse' });
 
-const Program = mongoose.model('Program', program);
+// Create a unique index on the specified fields
+programSchema.index({
+    nume_nava: 1, 
+    data_plecare: 1, 
+    data_sosire_estimata: 1, 
+    port_plecare: 1, 
+    port_sosire: 1
+}, { unique: true });
+
+// Create the model
+const Program = mongoose.model('Program', programSchema);
 
 export default Program;

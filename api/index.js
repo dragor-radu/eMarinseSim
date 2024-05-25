@@ -6,6 +6,8 @@ import programRoutes from './routes/program.routes.js';
 import ruteRoutes from './routes/rute.routes.js';
 import navigationRoutes from './routes/navigation.routes.js';
 import { startProgramCheck } from './controllers/navigation.controller.js';
+import authRoutes from './routes/auth.route.js';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config();
@@ -26,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
@@ -35,6 +38,7 @@ app.use("/api/porturi", porturiRoutes);
 app.use("/api/nave", naveRoutes);
 app.use("/api/program", programRoutes);
 app.use("/api/rute", ruteRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/navigation", navigationRoutes);
 
 startProgramCheck();
